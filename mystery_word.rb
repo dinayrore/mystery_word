@@ -5,7 +5,18 @@ def get_all_words(lines) # retrieves and cleans all words in file and stores in 
   end
 end
 
-# make three functions one for each dificulty
+def get_easy_words(lines)
+  easy =lines.map { |words| (words.length >= 4) && (words.length <= 6) }
+end
+
+def get_normal_words(lines)
+  normal =lines.map { |words| (words.length >= 6) && (words.length <= 8) }
+end
+
+def get_hard_words(lines)
+  hard =lines.map { |words| (words.length >= 8) && (words.length <= 24) }
+end
+
 
 def # select word at random
 end
