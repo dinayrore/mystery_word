@@ -1,5 +1,11 @@
-def # select subset from complete word list
+def get_all_words(lines) # retrieves and cleans all words in file and stores in arr
+  lines = File.readlines("usr/share/dict/words")
+  lines.map do |words|
+    words.chomp
+  end
 end
+
+# make three functions one for each dificulty
 
 def # select word at random
 end
