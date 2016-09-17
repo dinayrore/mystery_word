@@ -55,7 +55,6 @@ def guesses(letter, word)
   end
 end
 
-
 #
 # def won_game()
 #   mystery.each do |letter|
