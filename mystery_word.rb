@@ -53,7 +53,6 @@ def guesses(word)
       guess_correct << letter
       puts "Good job!"
       puts word.gsub(/[^#{guess_correct}]/, " _ ")
-      turn += 1
       puts "Turn: #{turn}"
       end_game(guess_correct, word, turn)
     else
