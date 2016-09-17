@@ -41,22 +41,27 @@ end
 
 def guesses(word)
   guess_correct = []
-  guess_incorrect = []
-
+  turn = 0
+  while turn < 8
     print "Please guess a letter: "
-    letter = gets.chomp
-
-    if word.include?(letter)
+    letter = gets.chomp.downcase
+    if guess_correct.include?(letter)
+      puts "You guessed that letter already. Try again."
+      puts word.gsub(/[^#{guess_correct}]/, " _ ")
+      puts "Turn: #{turn}"
+    elsif word.include?(letter)
       guess_correct << letter
       puts "Good job!"
       puts word.gsub(/[^#{guess_correct}]/, " _ ")
+      turn += 1
+      puts "Turn: #{turn}"
       #puts guess_correct
     else
-      guess_incorrect << letter
       puts "You suck! Try again."
-      puts display_word_blanks(word)
-      #puts guess_incorrect
-
+      puts word.gsub(/[^#{guess_correct}]/, " _ ")
+      turn += 1
+      puts "Turn: #{turn}"
+    end
   end
 end
 
@@ -79,6 +84,8 @@ def main()
   puts word
   puts display_word_blanks(word)
   guesses(word)
+
+
 end
 
 if __FILE__ == $PROGRAM_NAME
