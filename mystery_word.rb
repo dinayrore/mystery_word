@@ -1,64 +1,70 @@
-easy = []
-normal = []
-hard = []
 
-def get_all_words(x) # retrieves and cleans all words in file and stores in arr
-  dictionary = File.readlines(x)
-  dictionary.map! do |i|
-    i.chomp
+require 'pry'
+def get_all_words(file_name)# retrieve all words in file and stores words as strings in array
+  lines = File.readlines(file_name)
+  lines = lines.map! do |words|
+    words.chomp
   end
+  return lines
 end
 
-def get_easy_words(x, array)
-  x.each do |i|
-    if i.length >= 4 && i.length <= 6
-      array.push(i)
+def get_easy_words(file_lines)
+  easy_words = []
+  file_lines.each do |easy_word|
+    if (easy_word.length >= 4) && (easy_word.length <= 6)
+      easy_words << easy_word
     end
   end
+  return easy_words
 end
 
-def get_normal_words(x, array)
-  x.each do |i|
-    if i.length >= 6 && i.length <= 8
-      array.push(i)
-    end
-  end
-end
-
-def get_hard_words(x, array)
-  x.each do |i|
-    if i.length >= 8 && i.length <= 24
-      array.push(i)
-    end
-  end
-end
-=begin
-def get_normal(x)
+def get_normal_words(file_lines)
   normal_words = []
-  x.each do |i|
-    if (i.length >=6 ) && (i.length <=8 )
-      normal_words << x
+  file_lines.each do |normal_word|
+    if (normal_word.length >= 6) && (normal_word.length <= 8)
+      normal_words << normal_word
     end
   end
+  return normal_words
 end
-=end
+
+def get_hard_words(file_lines)
+  hard_words = []
+  file_lines.each do |hard_word|
+    if (hard_word.length >= 8) && (hard_word.length <= 24)
+      hard_words << hard_word
+    end
+  end
+  return hard_words
+end
 
 
-dictionary = get_all_words("/usr/share/dict/words")
-get_easy_words(dictionary,easy)
-get_normal_words(dictionary,normal)
-get_hard_words(dictionary,hard)
-print hard
+#
+# def # select word at random
+# end
+#
+# def # display word with blanks/letters filled in
+#
+# end
+#
+# def # check if word has been guessed
+#
+# end
+#
 
 
-=begin
- if dictionary.each do |x|
-  if x.length >= 4 && x.length <= 6
-    easy.push(x)
+def main()
+  puts "Which difficulty would you like?"
+  level = gets.chomp.downcase
+  lines = get_all_words("/usr/share/dict/words")
+  if level == "easy"
+    easy_words = get_easy_words(lines)
+  elsif level == "normal"
+    normal_words = get_normal_words(lines)
+  else # level =="hard"
+    hard_words = get_hard_words(lines)
   end
 end
-=end
-
 
 
 =begin
