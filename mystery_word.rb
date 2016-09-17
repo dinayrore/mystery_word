@@ -3,7 +3,6 @@ def get_all_words(file_name, level)
   lines = lines.map! do |words|
     words.chomp
   end
-  difficulty(lines,level)
 end
 
 def difficulty(file_lines, level)
@@ -20,7 +19,7 @@ def difficulty(file_lines, level)
       main
     end
   end
-  return mini_list
+  return mini_list.sample
 end
 
 def get_easy_words(lines)
@@ -33,6 +32,10 @@ end
 
 def get_hard_words(lines)
   lines.length >= 8 && lines.length <= 24
+end
+
+def display_word_blanks(word)
+  word.gsub(/[0-9A-Za-z]/, " _ ")
 end
 
 
@@ -62,7 +65,9 @@ def main()
   print "Choose a difficulty level by typing \'easy\', \'normal\', or \'hard\': "
   level = gets.chomp.downcase
   lines = get_all_words("/usr/share/dict/words", level)
-  #mini_list  needs to be used down here
+  word = difficulty(lines,level)
+  puts word
+  puts display_word_blanks(word)
 end
 
 main
