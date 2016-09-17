@@ -1,4 +1,3 @@
-require 'pry'
 def get_all_words(file_name, level)
   lines = File.readlines(file_name)
   lines = lines.map! do |words|
@@ -20,7 +19,7 @@ def difficulty(file_lines, level)
       main
     end
   end
-  return mini_list.sample
+  return mini_list.sample.downcase
 end
 
 def get_easy_words(lines)
@@ -41,11 +40,12 @@ end
 
 def guesses(word)
   guess_correct = []
+  guess_incorrect = []
   turn = 0
-  while turn < 8
+  while turn <= 8
     print "Please guess a letter: "
     letter = gets.chomp.downcase
-    if guess_correct.include?(letter)
+    if guess_correct.include?(letter) || guess_incorrect.include?(letter)
       puts "You guessed that letter already. Try again."
       puts word.gsub(/[^#{guess_correct}]/, " _ ")
       puts "Turn: #{turn}"
@@ -55,25 +55,50 @@ def guesses(word)
       puts word.gsub(/[^#{guess_correct}]/, " _ ")
       turn += 1
       puts "Turn: #{turn}"
-      #puts guess_correct
+      end_game(guess_correct, word, turn)
     else
       puts "You suck! Try again."
-      puts word.gsub(/[^#{guess_correct}]/, " _ ")
-      turn += 1
       puts "Turn: #{turn}"
+      if guess_correct.count < 1
+        guess_incorrect << letter
+        puts word.gsub(/[^#{letter}]/, " _ ")
+      else
+        guess_incorrect << letter
+        puts word.gsub(/[^#{guess_correct}]/, " _ ")
+        turn += 1
+      end
     end
   end
+  end_game(guess_correct, word, turn)
 end
 
-#
-# def won_game()
-#   mystery.each do |letter|
-#     return false if ! correct_guesses.include?(letter)
-#   end
-#   end
-#   return true
-# end
-
+def end_game(guess_correct, word, turn)
+  if word_array = word.split(//).uniq.sort
+      if word_array == guess_correct.sort!
+        puts "YOU WIN!"
+        puts "Would you like to play again?"
+        print "Type \'rematch\' to play again and \'exit\' to quit: "
+        user_input = gets.chomp.downcase
+        if user_input == "rematch"
+          main
+        else
+          exit
+        end
+      end
+  end
+  if turn >= 8 
+        puts "YOU LOSE."
+        puts word
+        puts "Would you like to play again?"
+        print "Type \'rematch\' to play again and \'exit\' to quit: "
+        user_input = gets.chomp.downcase
+        if user_input == "rematch"
+          main
+        else
+          exit
+        end
+  end
+end
 
 def main()
   puts "Lets play a game of Hangman!"
@@ -84,8 +109,6 @@ def main()
   puts word
   puts display_word_blanks(word)
   guesses(word)
-
-
 end
 
 if __FILE__ == $PROGRAM_NAME
