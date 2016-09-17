@@ -36,14 +36,14 @@ def get_normal_words(file_lines)
   return normal_words
 end
 
-=begin
-def get_hard_words(lines)
+def get_hard_words(file_lines)
   hard_words = []
-  hard = lines.each do |words|
-  if (words.length >= 8) && (words.length <= 24)
-    hard_words << words
+  file_lines.each do |hard_words|
+    if (hard_words.length >= 8) && (hard_words.length <= 24)
+      hard_words << words
+    end
   end
-  end
+  return hard_words
 end
 
 #
