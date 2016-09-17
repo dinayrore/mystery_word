@@ -1,4 +1,3 @@
-
 def get_all_words(file_name, level)
   lines = File.readlines(file_name)
   lines = lines.map! do |words|
@@ -40,8 +39,8 @@ def display_word_blanks(word)
 end
 
 def guesses(word)
-  turn = 0
   guess_correct =[]
+  turn = 0
   while turn < 8
     puts "Please guess a letter"
     letter = gets.chomp.downcase
@@ -81,28 +80,6 @@ end
 
 
 
-=begin
-  word_array.each do |element|
-    if guess_correct.include? element
-      puts "true"
-    end
-  puts "really true"
-  end
-end
-  if
-  else
-  puts "You have used all your turns."
-  end
-  "Would you like to play again? 'yes' or 'no'"
-  choice = gets.chomp
-  if choice == "yes"
-    main
-  else
-    exit
-=end
-
-
-
 def main()
   puts "Lets play a game of Hangman!"
   print "Choose a difficulty level by typing \'easy\', \'normal\', or \'hard\': "
@@ -114,6 +91,6 @@ def main()
   guesses(word)
 end
 
-if __FILE__==$PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
 main
 end
