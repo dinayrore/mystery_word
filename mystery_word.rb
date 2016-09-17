@@ -1,3 +1,4 @@
+
 def get_all_words(file_name, level)
   lines = File.readlines(file_name)
   lines = lines.map! do |words|
@@ -39,18 +40,21 @@ def display_word_blanks(word)
 end
 
 def guesses(word)
+  turn = 0
   guess_correct =[]
-  guess_incorrect = []
-  puts "Please guess a letter"
-  letter = gets.chomp
-  if word.include?(letter)
-    guess_correct << letter
-    puts "Good job!"
-    puts word.gsub(/[^ #{guess_correct}]/," _ ")
-  else
-    puts "You suck! Try again"
-    puts display_word_blanks(word)
-    guess_incorrect << letter
+  while turn < 8
+    puts "Please guess a letter"
+    letter = gets.chomp.downcase
+    if word.include?(letter)
+      guess_correct << letter
+      puts "Good job!"
+      puts word.gsub(/[^ #{guess_correct}]/," _ ")
+      turn += 1
+    else
+      puts "You suck! Try again"
+      puts word.gsub(/[^ #{guess_correct}]/," _ ")
+      turn += 1
+    end
   end
 end
 
