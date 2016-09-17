@@ -20,7 +20,7 @@ def difficulty(file_lines, level)
       main
     end
   end
-  return mini_list.sample
+  return mini_list.sample.downcase
 end
 
 def get_easy_words(lines)
@@ -53,22 +53,54 @@ def guesses(word)
       puts "Good job!"
       puts word.gsub(/[^ #{guess_correct}]/," _ ")
       turn += 1
+      puts "Turn: #{turn}"
+    end_game(guess_correct, word)
     else
       puts "You suck! Try again"
       puts word.gsub(/[^ #{guess_correct}]/," _ ")
       turn += 1
+      puts "Turn: #{turn}"
     end
+  end
+end_game(guess_correct, word)
+end
+
+def end_game(guess_correct, word)
+  word_array = word.split(//).uniq.sort
+  if word_array == guess_correct.sort!
+  puts "You win!"
+  puts "Would you like to play again?"
+  puts "Type 'rematch' to play again and 'exit' to quit."
+  user_input = gets.chomp.downcase
+  if user_input == "rematch"
+    main
+  else
+    exit
   end
 end
 
-#
-# def won_game()
-#   mystery.each do |letter|
-#     return false if ! correct_guesses.include?(letter)
-#   end
-#   end
-#   return true
-# end
+
+
+=begin
+  word_array.each do |element|
+    if guess_correct.include? element
+      puts "true"
+    end
+  puts "really true"
+  end
+end
+  if
+  else
+  puts "You have used all your turns."
+  end
+  "Would you like to play again? 'yes' or 'no'"
+  choice = gets.chomp
+  if choice == "yes"
+    main
+  else
+    exit
+=end
+
 
 
 def main()
