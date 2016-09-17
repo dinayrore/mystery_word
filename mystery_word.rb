@@ -30,7 +30,7 @@ def get_normal_words(file_lines)
   normal_words = []
   file_lines.each do |normal_word|
     if (normal_word.length >= 6) && (normal_word.length <= 8)
-      normal_words << words
+      normal_words << normal_word
     end
   end
   return normal_words
@@ -38,9 +38,9 @@ end
 
 def get_hard_words(file_lines)
   hard_words = []
-  file_lines.each do |hard_words|
-    if (hard_words.length >= 8) && (hard_words.length <= 24)
-      hard_words << words
+  file_lines.each do |hard_word|
+    if (hard_word.length >= 8) && (hard_word.length <= 24)
+      hard_words << hard_word
     end
   end
   return hard_words
@@ -59,7 +59,7 @@ end
 # end
 #
 
-=end
+
 def main()
   puts "Which difficulty would you like?"
   level = gets.chomp.downcase
