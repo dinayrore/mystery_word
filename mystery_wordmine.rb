@@ -38,11 +38,9 @@ end
 puts "What level do you want to play?"
 level = gets.chomp
 dictionary = get_all_words("/usr/share/dict/words")
-if level == "easy"
-  get_easy_words(dictionary,easy)
-  index  = rand(0..33208)
-  computer_num = easy[index]
-  puts computer_num
+if level == "hard"
+  get_hard_words(dictionary,hard)
+  puts hard.length
 end
 
 

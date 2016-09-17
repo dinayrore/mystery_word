@@ -1,74 +1,45 @@
-
-require 'pry'
-def get_all_words(file_name)# retrieve all words in file and stores words as strings in array
+def get_all_words(file_name, level)
   lines = File.readlines(file_name)
   lines = lines.map! do |words|
     words.chomp
   end
-  return lines
+  difficulty(lines,level)
 end
 
-def get_easy_words(file_lines)
-  easy_words = []
-  file_lines.each do |easy_word|
-    if (easy_word.length >= 4) && (easy_word.length <= 6)
-      easy_words << easy_word
+def difficulty(file_lines, level)
+  mini_list = []
+  file_lines.each do |words|
+    if level == "easy"
+      mini_list << words if get_easy_words(words)
+    elsif level == "normal"
+      mini_list << words if get_normal_words(words)
+    elsif level == "hard"
+      mini_list << words if get_hard_words(words)
+    else
+      puts "Invalid input. Please follow the directions."
+      main
     end
   end
-  return easy_words
+  puts mini_list.length
 end
 
-def get_normal_words(file_lines)
-  normal_words = []
-  file_lines.each do |normal_word|
-    if (normal_word.length >= 6) && (normal_word.length <= 8)
-      normal_words << normal_word
-    end
-  end
-  return normal_words
+def get_easy_words(lines)
+lines.length >= 4 && lines.length <= 6
 end
 
-def get_hard_words(file_lines)
-  hard_words = []
-  file_lines.each do |hard_word|
-    if (hard_word.length >= 8) && (hard_word.length <= 24)
-      hard_words << hard_word
-    end
-  end
-  return hard_words
+def get_normal_words(lines)
+lines.length >= 6 && lines.length <= 8
 end
 
-
-#
-# def # select word at random
-# end
-#
-# def # display word with blanks/letters filled in
-#
-# end
-#
-# def # check if word has been guessed
-#
-# end
-#
+def get_hard_words(lines)
+  lines.length >= 8 && lines.length <= 24
+end
 
 
 def main()
-  puts "Which difficulty would you like?"
-  level = gets.chomp.downcase
-  lines = get_all_words("/usr/share/dict/words")
-  if level == "easy"
-    easy_words = get_easy_words(lines)
-  elsif level == "normal"
-    normal_words = get_normal_words(lines)
-  else # level =="hard"
-    hard_words = get_hard_words(lines)
-  end
+puts "What level do you want to play?"
+level = gets.chomp.downcase
+dictionary = get_all_words("/usr/share/dict/words", level)
 end
 
-
-=begin
-if __FILE__ == $PROGRAM_NAME
-  main
-end
-=end
+main
