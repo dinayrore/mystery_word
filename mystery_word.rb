@@ -45,7 +45,10 @@ def guesses(word)
   while turn < 8
     puts "Please guess a letter"
     letter = gets.chomp.downcase
-    if word.include?(letter)
+    if guess_correct.include?(letter)
+      puts "You already guessed that. Try again"
+      puts word.gsub(/[^ #{guess_correct}]/," _ ")
+    elsif word.include?(letter)
       guess_correct << letter
       puts "Good job!"
       puts word.gsub(/[^ #{guess_correct}]/," _ ")
