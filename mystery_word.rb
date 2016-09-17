@@ -38,15 +38,12 @@ def display_word_blanks(word)
   word.gsub(/[0-9A-Za-z]/, " _ ")
 end
 
-
-#def select_word_at_random
-  #
-# end
-#
-# def # display word with blanks/letters filled in
-#
-# end
-#
+def guesses(letter, word)
+  if word.include?(letter)
+    puts word.gsub(/[^ #{letter}]/,"_")
+  end
+end
+  #  word.gsub(/[^(letter)]/," _ ")
 # def # check if word has been guessed
 #
 # end
@@ -68,6 +65,11 @@ def main()
   word = difficulty(lines,level)
   puts word
   puts display_word_blanks(word)
+  puts "Please guess a letter"
+  guess = gets.chomp
+  guesses(guess, word)
 end
 
+if __FILE__==$PROGRAM_NAME
 main
+end
