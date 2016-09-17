@@ -39,8 +39,16 @@ def display_word_blanks(word)
 end
 
 def guesses(letter, word)
+  guess_correct =[]
+  guess_incorrect = []
   if word.include?(letter)
-    puts word.gsub(/[^ #{letter}]/,"_")
+    guess_correct << letter
+    puts "Good job!"
+    puts word.gsub(/[^ #{guess_correct}]/," _ ")
+  else
+    puts "You suck! Try again"
+    puts display_word_blanks(word)
+    guess_incorrect << letter
   end
 end
   #  word.gsub(/[^(letter)]/," _ ")
