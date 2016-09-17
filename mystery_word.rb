@@ -38,9 +38,11 @@ def display_word_blanks(word)
   word.gsub(/[0-9A-Za-z]/, " _ ")
 end
 
-def guesses(letter, word)
+def guesses(word)
   guess_correct =[]
   guess_incorrect = []
+  puts "Please guess a letter"
+  letter = gets.chomp
   if word.include?(letter)
     guess_correct << letter
     puts "Good job!"
@@ -51,10 +53,7 @@ def guesses(letter, word)
     guess_incorrect << letter
   end
 end
-  #  word.gsub(/[^(letter)]/," _ ")
-# def # check if word has been guessed
-#
-# end
+
 #
 # def won_game()
 #   mystery.each do |letter|
@@ -73,9 +72,7 @@ def main()
   word = difficulty(lines,level)
   puts word
   puts display_word_blanks(word)
-  puts "Please guess a letter"
-  guess = gets.chomp
-  guesses(guess, word)
+  guesses(word)
 end
 
 if __FILE__==$PROGRAM_NAME
