@@ -42,7 +42,7 @@ def guesses(word)
   guess_correct = []
   guess_incorrect = []
   turn = 0
-  while turn <= 8
+  while turn < 8
     print "Please guess a letter: "
     letter = gets.chomp.downcase
     if guess_correct.include?(letter) || guess_incorrect.include?(letter)
@@ -58,6 +58,7 @@ def guesses(word)
       end_game(guess_correct, word, turn)
     else
       puts "You suck! Try again."
+      turn += 1
       puts "Turn: #{turn}"
       if guess_correct.count < 1
         guess_incorrect << letter
@@ -65,7 +66,6 @@ def guesses(word)
       else
         guess_incorrect << letter
         puts word.gsub(/[^#{guess_correct}]/, " _ ")
-        turn += 1
       end
     end
   end
@@ -86,7 +86,7 @@ def end_game(guess_correct, word, turn)
         end
       end
   end
-  if turn >= 8 
+  if turn >= 8
         puts "YOU LOSE."
         puts word
         puts "Would you like to play again?"
@@ -106,7 +106,6 @@ def main()
   level = gets.chomp.downcase
   lines = get_all_words("/usr/share/dict/words", level)
   word = difficulty(lines,level)
-  puts word
   puts display_word_blanks(word)
   guesses(word)
 end
