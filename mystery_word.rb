@@ -38,6 +38,11 @@ def display_word_blanks(word)
   word.gsub(/[0-9A-Za-z]/, " _ ")
 end
 
+def more_than_one_letter_check (player_input)
+  player_input.length > 1
+
+end
+
 def guesses(word)
   guess_correct = []
   guess_incorrect = []
@@ -45,7 +50,9 @@ def guesses(word)
   while turn < 8
     print "Please guess a letter: "
     letter = gets.chomp.downcase
-    if guess_correct.include?(letter) || guess_incorrect.include?(letter)
+    if more_than_one_letter_check(letter)
+      puts "Invalid input. Please enter only one letter. Try again."
+    elsif guess_correct.include?(letter) || guess_incorrect.include?(letter)
       puts "You guessed that letter already. Try again."
       puts word.gsub(/[^#{guess_correct}]/, " _ ")
       puts "Turn: #{turn}"
@@ -87,7 +94,7 @@ def end_game(guess_correct, word, turn)
   end
   if turn >= 8
         puts "YOU LOSE."
-        puts word
+        puts "The word was '#{word}'."
         puts "Would you like to play again?"
         print "Type \'rematch\' to play again and \'exit\' to quit: "
         user_input = gets.chomp.downcase
@@ -105,6 +112,7 @@ def main()
   level = gets.chomp.downcase
   lines = get_all_words("/usr/share/dict/words", level)
   word = difficulty(lines,level)
+  puts "Your word has #{word.length} letters in it."
   puts display_word_blanks(word)
   guesses(word)
 end
