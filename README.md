@@ -28,12 +28,13 @@ Install rbenv & ruby-build - to install and compile different versions of Ruby c
 
 Install ruby 2.3.1 - the latest version of Ruby
 1. Close and reopen Terminal.
-``rbenv install 2.3.1``
+```
+rbenv install 2.3.1
+```
 After quite some time, run
-``rbenv global 2.3.1``
-Close and reopen Terminal.
-Run ```which ruby.``` If you see a path starting with /usr/bin/, get a TA or instructor to help you.
-
+```
+rbenv global 2.3.1
+```
 Once you have completed the above installation processes your system should be ready to launch the program!
 
 ## Deployment
@@ -44,7 +45,7 @@ Please complete the following procedure to run the program on a live system:
   `cd folder_name`
   3. Type `ruby blackjack_advisor.rb` to run the program.
   4. READ all instructions BEFORE adding input.
-  
+
 ## Built With
 
 * Atom
