@@ -35,7 +35,7 @@ Once you have completed the above installation processes your system should be r
 Please complete the following procedure to run the program on a live system:
   1. Open Terminal.
   2. Change your directory to the one that which you have saved this zip file.`cd folder_name`
-  3. Type `ruby blackjack_advisor.rb` to run the program.
+  3. Type `ruby mystery_word.rb` to run the program.
   4. READ all instructions BEFORE adding input.
 
 ## Built With
@@ -49,4 +49,4 @@ Please complete the following procedure to run the program on a live system:
 
 ## Acknowledgments
 
-* The Iron Yard Durham
+* The Iron Yard - Durham
