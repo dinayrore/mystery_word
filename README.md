@@ -17,14 +17,26 @@ Find Terminal - to run program
 
 Install Homebrew - to store program files properly
 1. Open up Terminal.
-2. Run ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
-3. Run ```brew doctor```
+2. Run
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+3. Run
+```
+brew doctor
+```
 
 Install rbenv & ruby-build - to install and compile different versions of Ruby code language
 
 1. Open up Terminal
-2. ```brew install ruby-build rbenv```
-3. ```echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile```
+2. Run
+```
+brew install ruby-build rbenv
+```
+3. Run
+```
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+```
 
 Install ruby 2.3.1 - the latest version of Ruby
 1. Close and reopen Terminal.
