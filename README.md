@@ -26,7 +26,7 @@ Install rbenv & ruby-build - to install and compile different versions of Ruby c
   3. Run `echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile`
 
 Install ruby 2.3.1 - the latest version of Ruby
-  1. Close and reopen Terminal. `rbenv install 2.3.1`
+  1. Close and reopen Terminal, then run `rbenv install 2.3.1`
   2. After quite some time, run: `rbenv global 2.3.1`
   
 Once you have completed the above installation processes your system is ready to launch the program!
@@ -36,7 +36,7 @@ Once you have completed the above installation processes your system is ready to
 Please complete the following procedure to run the program on a live system:
   1. Open Terminal.
   2. Change your directory to the one that which you would like to save this project. `$ cd folder_name`
-  3. Then, run the commands `https://github.com/kteich88/mystery_word.git` and `$ cd number_guessing_game` to gain access to the folder files.
+  3. Then, run the commands `https://github.com/kteich88/mystery_word.git` and `$ cd number_guessing_game` to access the folder/files.
   4. Type `$ ruby mystery_word.rb` to run the program.
   5. READ all instructions BEFORE adding input.
 
